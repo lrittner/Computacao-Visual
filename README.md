@@ -1,12 +1,12 @@
-# IA898
-Conjunto de funções utilizadas no curso IA898 - Processamento Digital de Imagens
+# IA979
+Conjunto de funções utilizadas no curso IA979 - Intr. Computação Gráfica e Processamento de Imagem
 
-Criado primeira vez no curso do 1º semestre 2017
+1º semestre 2020
 
 ## Instalação
 
 - faça o clone do repositório
-- abra o jupyter e execute o notebook ia898/src/GenerateLibrary
+- abra o jupyter e execute o notebook ia979/src/GenerateLibrary
 
 ## Dependência:
     - numpy
