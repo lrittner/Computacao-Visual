@@ -9,18 +9,29 @@ import OpenGL.GL as gl
 
 class ModelRenderer():
     
-    TRIANGLES = 1
-    LINES = 2
-    LINE_LOOP = 3
-    POINTS = 4
+    POINTS = 0
+    LINES = 1
+    LINE_LOOP = 2
+    LINE_STRIP = 3
+    TRIANGLES = 4
+    TRIANGLE_STRIP = 5
+    TRIANGLE_FAN = 6
     
     def __init__(self, vertex_position, vertex_indices=[], vertex_color=[], primitive=TRIANGLES):
         
-        # triangle position and color
+        gl_primitives = [gl.GL_POINTS,
+                         gl.GL_LINES, gl.GL_LINE_LOOP, gl.GL_LINE_STRIP,
+                         gl.GL_TRIANGLES, gl.GL_TRIANGLE_STRIP, gl.GL_TRIANGLE_FAN]
+        
         self.__vertexPosition = vertex_position
         self.__vertexIndices = vertex_indices
         self.__vertexColor = vertex_color
-        self.__primitive = primitive
+        
+        if(primitive >= 0 and primitive <= 6):
+            self.__primitive = gl_primitives[primitive]
+        else:
+            print('ModelRenderer: primitiva inválida. Mudando para a primitiva TRIANGLES.')
+            self.__primitive = gl.GL_TRIANGLES
         
         self.__positionVBO = 0
         self.__colorVBO = 0
@@ -32,7 +43,6 @@ class ModelRenderer():
         
     def __createBuffer(self):
         
-        # create VBO
         self.__VAO = gl.glGenVertexArrays(1)
         self.__positionVBO = gl.glGenBuffers(1)
         gl.glBindBuffer(gl.GL_ARRAY_BUFFER, self.__positionVBO)
@@ -82,30 +92,9 @@ class ModelRenderer():
             gl.glBindVertexArray(self.__VAO)
 
             if(self.__EBO == 0):
-                if(self.__primitive == ModelRenderer.TRIANGLES):
-                    gl.glDrawArrays(gl.GL_TRIANGLES, 0, self.__vertexPosition.size // 4)
-
-                elif(self.__primitive == ModelRenderer.LINES):
-                    gl.glDrawArrays(gl.GL_LINES, 0, self.__vertexPosition.size // 4)
-                    
-                elif(self.__primitive == ModelRenderer.LINE_LOOP):
-                    gl.glDrawArrays(gl.GL_LINE_LOOP, 0, self.__vertexPosition.size // 4)
-                    
-                elif(self.__primitive == ModelRenderer.POINTS):
-                    gl.glDrawArrays(gl.GL_POINTS, 0, self.__vertexPosition.size // 4)
-                    
+                gl.glDrawArrays(self.__primitive, 0, self.__vertexPosition.size // 4)
             else:
-                if(self.__primitive == ModelRenderer.TRIANGLES):
-                    gl.glDrawElements(gl.GL_TRIANGLES, self.__vertexIndices.size, gl.GL_UNSIGNED_INT, None)
-
-                elif(self.__primitive == ModelRenderer.LINES):
-                    gl.glDrawElements(gl.GL_LINES, self.__vertexIndices.size, gl.GL_UNSIGNED_INT, None)
-                    
-                elif(self.__primitive == ModelRenderer.LINE_LOOP):
-                    gl.glDrawElements(gl.LINE_LOOP, self.__vertexIndices.size, gl.GL_UNSIGNED_INT, None)
-                
-                elif(self.__primitive == ModelRenderer.POINTS):
-                    gl.glDrawElements(gl.GL_POINTS, self.__vertexIndices.size, gl.GL_UNSIGNED_INT, None)
+                gl.glDrawElements(self.__primitive, self.__vertexIndices.size, gl.GL_UNSIGNED_INT, None)
 
             gl.glBindVertexArray(0)
     
