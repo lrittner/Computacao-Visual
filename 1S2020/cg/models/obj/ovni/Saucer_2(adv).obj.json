@@ -1,0 +1,21 @@
+{
+  "created_at": "2020-05-18T00:22:36.551692",
+  "version": "0.1",
+  "mtllibs": [
+    "Saucer_2(adv).mtl"
+  ],
+  "vertex_buffers": [
+    {
+      "material": "Core",
+      "vertex_format": "N3F_V3F",
+      "byte_offset": 0,
+      "byte_length": 1363968
+    },
+    {
+      "material": "Hull",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 1363968,
+      "byte_length": 9371520
+    }
+  ]
+}
