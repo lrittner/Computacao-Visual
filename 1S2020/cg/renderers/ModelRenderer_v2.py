@@ -12,6 +12,7 @@ class ModelRenderer():
     TRIANGLES = 1
     LINES = 2
     LINE_LOOP = 3
+    POINTS = 4
     
     def __init__(self, vertex_position, vertex_indices=[], vertex_color=[], primitive=TRIANGLES):
         
@@ -90,6 +91,9 @@ class ModelRenderer():
                 elif(self.__primitive == ModelRenderer.LINE_LOOP):
                     gl.glDrawArrays(gl.GL_LINE_LOOP, 0, self.__vertexPosition.size // 4)
                     
+                elif(self.__primitive == ModelRenderer.POINTS):
+                    gl.glDrawArrays(gl.GL_POINTS, 0, self.__vertexPosition.size // 4)
+                    
             else:
                 if(self.__primitive == ModelRenderer.TRIANGLES):
                     gl.glDrawElements(gl.GL_TRIANGLES, self.__vertexIndices.size, gl.GL_UNSIGNED_INT, None)
@@ -99,6 +103,9 @@ class ModelRenderer():
                     
                 elif(self.__primitive == ModelRenderer.LINE_LOOP):
                     gl.glDrawElements(gl.LINE_LOOP, self.__vertexIndices.size, gl.GL_UNSIGNED_INT, None)
+                
+                elif(self.__primitive == ModelRenderer.POINTS):
+                    gl.glDrawElements(gl.GL_POINTS, self.__vertexIndices.size, gl.GL_UNSIGNED_INT, None)
 
             gl.glBindVertexArray(0)
     
