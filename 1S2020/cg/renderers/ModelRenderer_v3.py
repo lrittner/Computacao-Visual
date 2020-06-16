@@ -73,7 +73,6 @@ class ModelRenderer():
     def setVertexPositionLoc(self, position_loc):
         
         if(self.__positionVBO > 0):
-            # enable array and set up data
             gl.glBindVertexArray(self.__VAO)
             gl.glBindBuffer(gl.GL_ARRAY_BUFFER, self.__positionVBO)
             gl.glEnableVertexAttribArray(position_loc)
@@ -84,8 +83,6 @@ class ModelRenderer():
     def setVertexColorLoc(self, color_loc):
         
         if(self.__colorVBO > 0):
-            # the last parameter is a pointer
-            # python donot have pointer, have to using ctypes
             gl.glBindVertexArray(self.__VAO)
             gl.glBindBuffer(gl.GL_ARRAY_BUFFER, self.__colorVBO)
             gl.glEnableVertexAttribArray(color_loc)
@@ -96,15 +93,37 @@ class ModelRenderer():
     def setVertexNormalLoc(self, normal_loc):
         
         if(self.__normalVBO > 0):
-            # the last parameter is a pointer
-            # python donot have pointer, have to using ctypes
             gl.glBindVertexArray(self.__VAO)
             gl.glBindBuffer(gl.GL_ARRAY_BUFFER, self.__normalVBO)
             gl.glEnableVertexAttribArray(normal_loc)
             gl.glVertexAttribPointer(normal_loc, 3, gl.GL_FLOAT, gl.GL_FALSE, 0, None)
             gl.glBindBuffer(gl.GL_ARRAY_BUFFER, 0)
             gl.glBindVertexArray(0)
+    
+    def updateVertexPositions(self, vertex_position):
         
+        if(self.__positionVBO > 0):
+            self.__vertexPosition = vertex_position
+            gl.glBindBuffer(gl.GL_ARRAY_BUFFER, self.__positionVBO)
+            gl.glBufferData(gl.GL_ARRAY_BUFFER, self.__vertexPosition.nbytes, self.__vertexPosition, gl.GL_STATIC_DRAW)
+            gl.glBindBuffer(gl.GL_ARRAY_BUFFER, 0)
+            
+    def updateVertexColors(self, vertex_color):
+        
+        if(self.__colorVBO > 0):
+            self.__vertexColor = vertex_color
+            gl.glBindBuffer(gl.GL_ARRAY_BUFFER, self.__colorVBO)
+            gl.glBufferData(gl.GL_ARRAY_BUFFER, self.__vertexColor.nbytes, self.__vertexColor, gl.GL_STATIC_DRAW)
+            gl.glBindBuffer(gl.GL_ARRAY_BUFFER, 0)
+    
+    def updateVertexNormals(self, vertex_normals):
+        
+        if(self.__normalVBO > 0):
+            self.__vertexNormal = vertex_normals
+            gl.glBindBuffer(gl.GL_ARRAY_BUFFER, self.__normalVBO)
+            gl.glBufferData(gl.GL_ARRAY_BUFFER, self.__vertexNormal.nbytes, self.__vertexNormal, gl.GL_STATIC_DRAW)
+            gl.glBindBuffer(gl.GL_ARRAY_BUFFER, 0)
+            
     def render(self):
         
         if(self.__VAO > 0):

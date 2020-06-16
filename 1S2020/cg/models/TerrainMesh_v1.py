@@ -26,21 +26,25 @@ class TerrainMesh():
         if(image_data.ndim == 3):
             image_data = image_data.mean(axis=2)
         
-        vertex_positions = self.__squareMesh.getVertexPositions()
-        
         max_value = image_data.max()
         
-        for i in range(vertex_positions.size // 4):
-            ind_x = int(((vertex_positions[i * 4] + (width / 2.0)) / width) * (image_data.shape[0] - 1))
-            ind_y = int(((vertex_positions[i * 4 + 1] + (height / 2.0)) / height) * (image_data.shape[1] - 1))
-
-            vertex_positions[i * 4 + 2] = (image_data[ind_x, ind_y] / max_value) * depth
-            
+        # Para cada vértice, calcula o index da imagem correspondente
+        vertex_positions = self.__squareMesh.getVertexPositions()
+        
+        img_ind_x = ((vertex_positions[0::4] + (width / 2.0)) / width) * (image_data.shape[0] - 1)
+        img_ind_y = ((vertex_positions[1::4] + (height / 2.0)) / height) * (image_data.shape[1] - 1)
+        
+        img_ind_x = np.asarray(img_ind_x, dtype=np.int32)
+        img_ind_y = np.asarray(img_ind_y, dtype=np.int32)
+        
+        # calcula a nova altura para cada vértice
+        vertex_positions[2::4] = (image_data[img_ind_x, img_ind_y] / max_value) * depth
+        
+        # calcula as normais considerando a nova altura de cada vértice
         vertex_indices = self.__squareMesh.getVertexIndices()
         vertex_normals = self.__squareMesh.getVertexNormals()
-        
         vertex_normals[:] = 0.0
-            
+        
         for i in range(vertex_indices.size // 3):
             
             pos0 = vertex_indices[i * 3]
@@ -54,7 +58,8 @@ class TerrainMesh():
             vertex_normals[pos0 * 3: pos0 * 3 + 3] = vertex_normals[pos0 * 3: pos0 * 3 + 3] + normal
             vertex_normals[pos1 * 3: pos1 * 3 + 3] = vertex_normals[pos1 * 3: pos1 * 3 + 3] + normal
             vertex_normals[pos2 * 3: pos2 * 3 + 3] = vertex_normals[pos2 * 3: pos2 * 3 + 3] + normal
-
+            
+        # normaliza as normais
         for i in range(vertex_normals.size // 3):
             vertex_normals[i * 3: i * 3 + 3] = vertex_normals[i * 3: i * 3 + 3] / np.linalg.norm(vertex_normals[i * 3: i * 3 + 3])
 
