@@ -1,0 +1,15 @@
+{
+  "created_at": "2020-06-27T22:33:49.027149",
+  "version": "0.1",
+  "mtllibs": [
+    "OBJ.mtl"
+  ],
+  "vertex_buffers": [
+    {
+      "material": "wire_225198087",
+      "vertex_format": "T2F_N3F_V3F",
+      "byte_offset": 0,
+      "byte_length": 7372800
+    }
+  ]
+}
