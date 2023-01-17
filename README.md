@@ -1,5 +1,6 @@
 # EA979
-Conjunto de funções utilizadas no curso EA979 - Intr. Computação Gráfica e Processamento de Imagem
+Material utilizado no curso EA979 - Intr. Computação Gráfica e Processamento de Imagem.
+Os principais tópicos do curso são introduzidos na forma de tutoriais usando o Jupyter Notebook, com exemplos práticos em python. 
 
 ## Instalação
 
@@ -11,9 +12,9 @@ Conjunto de funções utilizadas no curso EA979 - Intr. Computação Gráfica e 
     - matplotlib
     - jupyter and jupyter extentions
 
-## Introdução ao Processamento de Imagens
+## Índice e links para os tutoriais
 
-1. [Overview](01_Processamento_Imagens.ipynb)
+1. [Overview](tutoriais/01_Processamento_Imagens.ipynb)
 
 ### Introdução às Imagens digitais
     
