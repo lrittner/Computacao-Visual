@@ -1,8 +1,6 @@
 # EA979
 Conjunto de funções utilizadas no curso EA979 - Intr. Computação Gráfica e Processamento de Imagem
 
-1º semestre 2020
-
 ## Instalação
 
 - faça o clone do repositório
