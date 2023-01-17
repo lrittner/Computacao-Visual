@@ -11,6 +11,16 @@ Conjunto de funções utilizadas no curso EA979 - Intr. Computação Gráfica e 
     - matplotlib
     - jupyter and jupyter extentions
 
+## Introdução ao Processamento de Imagens
+
+1. [Overview](01_Processamento_Imagens.ipynb)
+
+### Introdução às Imagens digitais
+    
+1. [Introdução ao NumPy](02_Aprendendo_Numpy.ipynb) 
+2. [Manipulando imagens: abrir, salvar, visualizar, criar](03_Lendo_e_Visualizando_Imagens.ipynb)
+3. [Geração de imagens sintéticas](04_Gerando_imagens_sinteticas.ipynb)
+
 ## Lessons
 - [chess](master/chess.ipynb) - Illustrate the many ways to create an image of a chess like template
 - iauint8pitfalls- Common errors processing uint8 data
