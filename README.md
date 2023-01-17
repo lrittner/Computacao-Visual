@@ -12,15 +12,42 @@ Os principais tópicos do curso são introduzidos na forma de tutoriais usando o
     - matplotlib
     - jupyter and jupyter extentions
 
-## Índice e links para os tutoriais
+## Conteúdo do curso
 
-1. [Overview](tutoriais/01_Processamento_Imagens.ipynb)
+[Introdução ao Processamento de Imagens (overview)](tutoriais/01_Processamento_Imagens.ipynb)
+### 1. Introdução às Imagens digitais
 
-### Introdução às Imagens digitais
-    
-1. [Introdução ao NumPy](02_Aprendendo_Numpy.ipynb) 
-2. [Manipulando imagens: abrir, salvar, visualizar, criar](03_Lendo_e_Visualizando_Imagens.ipynb)
-3. [Geração de imagens sintéticas](04_Gerando_imagens_sinteticas.ipynb)
+1. [Introdução ao NumPy](tutoriais/02_Aprendendo_Numpy.ipynb) 
+2. [Manipulando imagens: abrir, salvar, visualizar, criar](tutoriais/03_Lendo_e_Visualizando_Imagens.ipynb)
+3. [Geração de imagens sintéticas](tutoriais/04_Gerando_imagens_sinteticas.ipynb)
+
+### 2. Transformações radiométricas (ponto-a-ponto)
+
+1. [Histograma da Imagem](tutoriais/05_Histograma_da_imagem.ipynb)
+2. [Transformação de Intensidade](../master/tutorial_ti_2.ipynb)
+3. [Tutorial sobre equalização de histograma](../master/tutorial_hist_eq_2.ipynb)
+4. [Tutorial equalização de histograma por montagem de mosaico](../master/tutorial_pehist_1.ipynb)
+5. [Transformações em cores](tutoriais/06_Histograma_de_Imagens_Coloridas.ipynb)
+
+### Transformações espaciais (vizinhança)
+
+1. [Filtragem no domínio espacial](tutoriais/07_Filtragem_no_dominio_espacial.ipynb)
+2. [Convolução como média ponderada de translações da imagem](../master/tutorial_conv_3.ipynb)
+
+### Transformações no domínio da frequência - Transformada de Fourier
+
+1. [Geração de ondas senoidais 1D e 2D](tutoriais/08_Ondas_senoidais.ipynb)
+2. [Translação periódica](tutoriais/09_Translacao_periodica.ipynb)
+3. [Propriedades da DFT](tutoriais/10_A_transformada_discreta_de_Fourier_DFT.ipynb)
+4. [Teorema da Convolução](tutoriais/11_Teorema_da_Convolucao.ipynb)
+5. [Filtros em frequência](tutoriais/12_Filtros_em_frequencia.ipynb)
+
+### Segmentação
+
+1. [Segmentação por Otsu](tutoriais/14_Segmentacao_por_Otsu.ipynb)
+2. [Exemplo de segmentação por Watershed](tutoriais/15_Exemplo_de_Segmentacao_por_Watershed.ipynb)
+3. [Comparando Otsu e Watershed](tutoriais/16_Comparando_Otsu_e_Watershed.ipynb)
+
 
 ## Lessons
 - [chess](master/chess.ipynb) - Illustrate the many ways to create an image of a chess like template
