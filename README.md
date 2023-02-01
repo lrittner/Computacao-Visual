@@ -1,4 +1,4 @@
-# EA979
+# Computação Visual
 Material utilizado no curso EA979 - Intr. Computação Gráfica e Processamento de Imagem.
 Os principais tópicos do curso são introduzidos na forma de tutoriais usando o Jupyter Notebook, com exemplos práticos em python. 
 
