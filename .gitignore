@@ -1,4 +1,8 @@
 .DS_Store
+
+# Escondendo materiais de EA979
+src/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
