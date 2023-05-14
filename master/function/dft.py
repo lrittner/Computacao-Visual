@@ -17,24 +17,24 @@
 # In[3]:
 
 import numpy as np
+import dftmatrix
 
 def dft(f):
-    import ea979.src as ia
     f = np.asarray(f).astype(np.float64)
     if (len(f.shape) == 1):
         m = len(f)
-        A = ia.dftmatrix(f.shape[0])
+        A = dftmatrix.dftmatrix(f.shape[0])
         F = np.sqrt(m) * A.dot(f)
     elif (len(f.shape) == 2):
         (m, n) = f.shape
-        A = ia.dftmatrix(m)
-        B = ia.dftmatrix(n)
+        A = dftmatrix.dftmatrix(m)
+        B = dftmatrix.dftmatrix(n)
         F = np.sqrt(m * n) * (A.dot(f)).dot(B)
     else:
         (p,m,n) = f.shape
-        A = ia.dftmatrix(m)
-        B = ia.dftmatrix(n)
-        C = ia.dftmatrix(p)
+        A = dftmatrix.dftmatrix(m)
+        B = dftmatrix.dftmatrix(n)
+        C = dftmatrix.dftmatrix(p)
         Faux = A.dot(f)
         Faux = Faux.dot(B)
         F = np.sqrt(p)*np.sqrt(m)*np.sqrt(n)*C.dot(Faux)   
@@ -50,10 +50,6 @@ if testing:
     get_ipython().system(' jupyter nbconvert --to python dft.ipynb')
     import numpy as np
     import sys,os
-    ea979path = os.path.abspath('../../')
-    if ea979path not in sys.path:
-        sys.path.append(ea979path)
-    import ea979.src as ia
 
 
 # ### Numeric Example: comparing proposed with numpy function
@@ -63,7 +59,7 @@ if testing:
 if testing:
     
     f = np.arange(24).reshape(2,3,4) # original image with generic axis
-    F = ia.dft(f)   # proposed dft
+    F = dft(f)   # proposed dft
     F1 = np.fft.fftn(f) # numpy dft
     
     print('ia.dft:','\n',F.round(2),'\n')
@@ -76,11 +72,12 @@ if testing:
 # In[5]:
 
 if testing:    
-    f = ia.circle([256,256], 10, [129,129])   
-    ia.adshow(f)
-    F = ia.dft(f)
-    Fv = ia.dftview(F)
-    ia.adshow(Fv)
+    import circle, dftview
+    f = circle.circle([256,256], 10, [129,129])   
+    plt.imshow(f)
+    F = dft(f)
+    Fv = dftview.dftview(F)
+    plt.imshow(Fv)
 
 
 # ### Image example: 3d square 
